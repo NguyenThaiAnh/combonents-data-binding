@@ -8,6 +8,7 @@ import { Recipe } from '../recipe.model';
   styleUrls: ['./recipe-list.component.css']
 })
 export class RecipeListComponent implements OnInit {
+  // tạo ra recipeWasSelected để phát event ra bên ngoài để gửi tới recipes component (component cha)
   @Output() recipeWasSelected = new EventEmitter<Recipe>();
 
   recipes: Recipe[] = [
@@ -20,7 +21,8 @@ export class RecipeListComponent implements OnInit {
   ngOnInit() {
   }
 
-  onRecipeSelected(recipe: Recipe){
+  onRecipeSelected(recipe: Recipe){ // recipe này nhận từ recipe-item khi click
+    // lắng nghe những thay đổi từ recipe và phát event ra component cha
     this.recipeWasSelected.emit(recipe);
   }
 

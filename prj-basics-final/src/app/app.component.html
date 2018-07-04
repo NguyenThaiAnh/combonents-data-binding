@@ -28,6 +28,13 @@
       </ul>
       <p appBasicHighlight>STtyle me</p>
       <p [appBetterHighlight]="'red'" defaultColor='yellow'>appBetterHighlight</p>
+
+      <div [ngSwitch]="value">
+        <p *ngSwitchCase="1">1</p>
+        <p *ngSwitchCase="5">5</p>
+        <p *ngSwitchDefault>default</p>
+      </div>
+
     </div>
   </div>
 </div>

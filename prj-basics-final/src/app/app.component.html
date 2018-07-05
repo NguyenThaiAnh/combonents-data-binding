@@ -1,40 +1,13 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-12">
-      <button class="btn btn-primary"
-              (click)="onlyOdd = !onlyOdd">Only show odd numbers
-      </button>
-      <br><br>
-      <ul class="list-group">
-        <div *ngIf="onlyOdd">
-          <li class="list-group-item"
-              [ngClass] = "{odd: num % 2 !== 0}"
-              [ngStyle] = "{backgroundColor: num % 2 !== 0? 'yellow' : 'transparent'}"
-              *ngFor="let num of oddNumbers"> {{num}} </li>
-        </div>
-        <!--<div *ngIf="!onlyOdd">-->
-          <!--<li class="list-group-item"-->
-              <!--[ngClass] = "{odd: num % 2 !== 0}"-->
-              <!--[ngStyle] = "{backgroundColor: num % 2 !== 0? 'yellow' : 'transparent'}"-->
-              <!--*ngFor="let num of evenNUmbers"> {{num}} </li>-->
-        <!--</div>-->
-
-        <div *appUnless="onlyOdd">
-          <li class="list-group-item"
-              [ngClass] = "{odd: num % 2 !== 0}"
-              [ngStyle] = "{backgroundColor: num % 2 !== 0? 'yellow' : 'transparent'}"
-              *ngFor="let num of evenNUmbers"> {{num}} </li>
-        </div>
-      </ul>
-      <p appBasicHighlight>STtyle me</p>
-      <p [appBetterHighlight]="'red'" defaultColor='yellow'>appBetterHighlight</p>
-
-      <div [ngSwitch]="value">
-        <p *ngSwitchCase="1">1</p>
-        <p *ngSwitchCase="5">5</p>
-        <p *ngSwitchDefault>default</p>
-      </div>
-
+    <div class="col-xs-12 col-md-8 col-md-offset-2">
+      <app-new-account (accountAdded)="onAccountAdded($event)"></app-new-account>
+      <hr>
+      <app-account
+        *ngFor="let acc of accounts; let i = index"
+        [account]="acc"
+        [id]="i"
+        (statusChanged)="onStatusChanged($event)"></app-account>
     </div>
   </div>
 </div>

@@ -11,14 +11,15 @@ import { CounterService } from '../counter.service';
 export class ActiveUsersComponent implements OnInit {
   users: string[];
 
-  constructor(private userSerice: UsersService, private activeCounter: CounterService) {
+  constructor(private userSerice: UsersService) {
+  }
+
+  ngOnInit(): void {
+    this.users = this.userSerice.activeUsers;
   }
 
   onSetToInactive(id: number) {
     this.userSerice.setToInactive(id);
   }
 
-  ngOnInit(): void {
-    this.users = this.userSerice.activeUsers;
-  }
 }
